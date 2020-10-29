@@ -1,0 +1,14 @@
+.main {
+    width: 500px;
+    padding: 50px;
+}
+
+.main ul {
+    list-style-type: none;
+}
+
+
+.main ul li {
+    padding: 10px;
+
+}
