@@ -1,14 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
 
-import Boxdiv from './components/boxdiv'
+import Tab from "./components/tab";
 
 function App() {
-  return (
-    <div className="App">
-      <Boxdiv />
-    </div>
-  );
+    return (
+        <div className="App">
+            <Tab/>
+        </div>
+    );
 }
 
 export default App;
