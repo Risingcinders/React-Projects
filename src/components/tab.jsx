@@ -14,22 +14,71 @@ const Tab = (props) => {
             "Tab 3 Content is basically the same words in a different order",
         ],
     ];
+    const [actualObj, setActualObj] = useState([
+        { tabnumber: "tab 1", tabcontent: "the same words in a different o" },
+        { tabnumber: "tab 2", tabcontent: "the same words in a different o" },
+        { tabnumber: "tab 3", tabcontent: "the same words in a different o" },
+    ]);
 
     const [varObj, setVarObj] = useState(initialState);
+
     const handler = (e, value) => {
-        setSelectedContent(value.peanut)
-    }
+        setSelectedContent(value);
+    };
+
+    const getContent = () => {
+        var content = [];
+        for (var i = 0; i < varObj.length; i++) {
+            content.push(
+                <h3
+                    onClick={ (e) => {
+                        console.log(e);
+                        handler(e, varObj[i][1]);
+                        
+                    }}
+                >
+                    {varObj[i][0]}
+                </h3>
+            );
+        }
+        console.log(content);
+        return content;
+    };
+
+    const getContent2 = () => {
+        var content = [];
+        for (var i = 0; i < varObj.length; i++) {
+            content.push(
+                <h3
+                    onClick={(e) => {
+                        handler(e, actualObj[i].tabcontent);
+                    }}
+                >
+                    {actualObj[i].tabnumber}
+                </h3>
+            );
+        }
+        return content;
+    };
 
     return (
         <div>
-            <div id="tablist"> 
-            { varObj.map( (item, index) => {
-                return <h5
-                onClick={ (e) => { handler(e, {peanut : varObj[index][1]}) } }
-                className="tabby">
-                {varObj[index][0]}
-            </h5>
-            } )}</div>
+            <div>{getContent()}</div>
+            <div>{getContent2()}</div>
+            <div id="tablist">
+                {varObj.map((item, index) => {
+                    return (
+                        <h5
+                            onClick={(e) => {
+                                handler(e, varObj[index][1]);
+                            }}
+                            className="tabby"
+                        >
+                            {varObj[index][0]}
+                        </h5>
+                    );
+                })}
+            </div>
             <div id="contents"> {selectedContent} </div>
         </div>
     );
